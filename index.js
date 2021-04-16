@@ -18,7 +18,7 @@ fastify.get('/sun', async (request, reply) => {
 // Run the server!
 const start = async () => {
   try {
-    await fastify.listen(5000)
+    await fastify.listen(5000, '0.0.0.0')
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
