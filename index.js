@@ -3,13 +3,10 @@ const fastify = require('fastify')({ logger: true })
 const path = require('path')
 
 // Register plugins
-fastify.register(require('fastify-static'), {
-  root: path.join(__dirname, 'public'),
-  prefix: '/', // optional: default '/'
-})
+fastify.register(require('fastify-static'), require('./config/static.js').public)
 
 // Declare a route
-fastify.get('/public', async (request, reply) => {
+fastify.get('/', async (request, reply) => {
   return reply.sendFile('index.html')
 })
 
